@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donativos de Natal 🎄</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --vermelho-natal: #c41e3a;
+    --verde-natal: #165b33;
+    --dourado: #ffd700;
+    --branco-neve: #f8f9fa;
+    --cinza-escuro: #1a1a1a;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    color: var(--branco-neve);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Neve de fundo */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    animation: snowfall linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.3;
+    }
+}
+
+/* Container principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    position: relative;
+}
+
+.logo {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+h1 {
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, var(--vermelho-natal), var(--dourado), var(--verde-natal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    font-weight: 800;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6)); }
+    50% { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1)); }
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--dourado);
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.description {
+    font-size: 1.1rem;
+    color: #ccc;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Luzes de Natal */
+.christmas-lights {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.light {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    animation: twinkle 1.5s ease-in-out infinite;
+    box-shadow: 0 0 15px currentColor;
+}
+
+.light:nth-child(1) { background: #ff0000; animation-delay: 0s; }
+.light:nth-child(2) { background: #00ff00; animation-delay: 0.2s; }
+.light:nth-child(3) { background: #ffd700; animation-delay: 0.4s; }
+.light:nth-child(4) { background: #ff0000; animation-delay: 0.6s; }
+.light:nth-child(5) { background: #00ff00; animation-delay: 0.8s; }
+.light:nth-child(6) { background: #ffd700; animation-delay: 1s; }
+.light:nth-child(7) { background: #ff0000; animation-delay: 1.2s; }
+
+@keyframes twinkle {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.3; 
+        transform: scale(0.8);
+    }
+}
+
+/* Seção Principal */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 60px 0;
+}
+
+/* Card de Doação */
+.donation-card {
+    background: linear-gradient(135deg, rgba(196, 30, 58, 0.2), rgba(22, 91, 51, 0.2));
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.donation-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.02) 10px,
+        rgba(255, 255, 255, 0.02) 20px
+    );
+    animation: stripe-move 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes stripe-move {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+.card-title {
+    font-size: 2rem;
+    color: var(--dourado);
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.donation-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.donation-btn {
+    padding: 20px;
+    background: linear-gradient(135deg, var(--vermelho-natal), #8b0000);
+    border: 3px solid var(--dourado);
+    border-radius: 15px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(196, 30, 58, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.donation-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.donation-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.donation-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(196, 30, 58, 0.8);
+    border-color: #fff;
+}
+
+.donation-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.custom-amount {
+    margin-top: 20px;
+}
+
+.custom-amount label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--dourado);
+    font-weight: 600;
+}
+
+.custom-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.custom-amount input {
+    flex: 1;
+    padding: 15px;
+    font-size: 1.2rem;
+    border: 2px solid var(--dourado);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: 600;
+}
+
+.custom-amount input:focus {
+    outline: none;
+    border-color: #fff;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.submit-btn {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, var(--verde-natal), #0a5028);
+    border: 2px solid var(--dourado);
+    border-radius: 10px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(22, 91, 51, 0.5);
+}
+
+.submit-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(22, 91, 51, 0.8);
+}
+
+/* Progress Card */
+.progress-card {
+    background: linear-gradient(135deg, rgba(22, 91, 51, 0.2), rgba(196, 30, 58, 0.2));
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dourado);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+/* Barra de Progresso */
+.progress-section {
+    margin-bottom: 30px;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.progress-label {
+    font-size: 1.2rem;
+    color: var(--dourado);
+    font-weight: 600;
+}
+
+.progress-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.progress-current {
+    color: var(--verde-natal);
+    text-shadow: 0 0 10px rgba(22, 91, 51, 0.8);
+}
+
+.progress-goal {
+    color: var(--dourado);
+}
+
+.progress-bar-container {
+    height: 50px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 25px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 215, 0, 0.4);
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, 
+        var(--vermelho-natal) 0%, 
+        var(--dourado) 50%,
+        var(--verde-natal) 100%
+    );
+    border-radius: 25px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+
+.progress-percentage {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    position: relative;
+}
+
+/* Doadores Recentes */
+.recent-donors {
+    margin-top: 30px;
+}
+
+.donors-title {
+    font-size: 1.5rem;
+    color: var(--dourado);
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.donor-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.donor-item {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid var(--verde-natal);
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.donor-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.donor-amount {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--verde-natal);
+    text-shadow: 0 0 10px rgba(22, 91, 51, 0.8);
+}
+
+.donor-time {
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 5px;
+}
+
+.donor-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.donor-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.donor-list::-webkit-scrollbar-thumb {
+    background: var(--vermelho-natal);
+    border-radius: 10px;
+}
+
+/* Notificação */
+.notification {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--verde-natal), #0a5028);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: 0 10px 40px rgba(22, 91, 51, 0.8);
+    border: 3px solid var(--dourado);
+    transition: top 0.5s ease;
+    z-index: 1000;
+    text-align: center;
+}
+
+.notification.show {
+    top: 30px;
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(-2deg); }
+    75% { transform: translateX(-50%) rotate(2deg); }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    margin-top: 60px;
+}
+
+.footer-text {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.footer-heart {
+    color: var(--vermelho-natal);
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Responsivo */
+@media (max-width: 968px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .donation-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .donation-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Neve -->
+<div id="snow"></div>
+
+<!-- Notificação -->
+<div class="notification" id="notification"></div>
+
+<div class="container">
+    <!-- Header -->
+    <header>
+        <div class="logo">🎄</div>
+        <h1>Campanha de Natal</h1>
+        <div class="subtitle">Ajude-nos a espalhar a magia do Natal! 🎅</div>
+        <div class="christmas-lights">
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+        </div>
+        <p class="description">
+            Neste Natal, cada donativo faz a diferença. Junte-se a nós nesta jornada especial 
+            e ajude a tornar esta época ainda mais mágica para todos! 🎁✨
+        </p>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+        <!-- Card de Doação -->
+        <div class="donation-card">
+            <h2 class="card-title">💝 Fazer Donativo</h2>
+            
+            <div class="donation-options">
+                <button class="donation-btn" onclick="makeDonation(5)">
+                    €5
+                </button>
+                <button class="donation-btn" onclick="makeDonation(10)">
+                    €10
+                </button>
+                <button class="donation-btn" onclick="makeDonation(25)">
+                    €25
+                </button>
+                <button class="donation-btn" onclick="makeDonation(50)">
+                    €50
+                </button>
+                <button class="donation-btn" onclick="makeDonation(100)">
+                    €100
+                </button>
+                <button class="donation-btn" onclick="makeDonation(250)">
+                    €250
+                </button>
+            </div>
+
+            <div class="custom-amount">
+                <label for="customAmount">Ou escolha o seu valor:</label>
+                <div class="custom-input-group">
+                    <input 
+                        type="number" 
+                        id="customAmount" 
+                        placeholder="€0.00" 
+                        min="1"
+                        step="0.01"
+                    >
+                    <button class="submit-btn" onclick="makeCustomDonation()">
+                        Doar 🎁
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card de Progresso -->
+        <div class="progress-card">
+            <h2 class="card-title">🎯 Progresso da Meta</h2>
+            
+            <!-- Estatísticas -->
+            <div class="stats">
+                <div class="stat-box">
+                    <span class="stat-icon">💰</span>
+                    <div class="stat-label">Total Arrecadado</div>
+                    <div class="stat-value" id="totalAmount">€0</div>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-icon">❤️</span>
+                    <div class="stat-label">Doadores</div>
+                    <div class="stat-value" id="donorCount">0</div>
+                </div>
+            </div>
+
+            <!-- Barra de Progresso -->
+            <div class="progress-section">
+                <div class="progress-header">
+                    <span class="progress-label">Meta de Natal</span>
+                    <span class="progress-amount">
+                        <span class="progress-current" id="currentAmount">€0</span>
+                        <span class="progress-goal"> / €1000</span>
+                    </span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar">
+                        <span class="progress-percentage" id="progressPercentage">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doadores Recentes -->
+            <div class="recent-donors">
+                <h3 class="donors-title">⭐ Doadores Recentes</h3>
+                <div class="donor-list" id="donorList">
+                    <div style="text-align: center; color: #999; padding: 20px;">
+                        Seja o primeiro a doar! 🎅
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p class="footer-text">
+        Feito com <span class="footer-heart">❤️</span> no espírito de Natal
+    </p>
+    <p class="footer-text">🎄 Feliz Natal! 🎅</p>
+</footer>
+
+<script>
+// Configuração
+const GOAL = 1000;
+let totalDonated = 0;
+let donorCount = 0;
+let recentDonors = [];
+
+// Elementos
+const progressBar = document.getElementById('progressBar');
+const progressPercentage = document.getElementById('progressPercentage');
+const totalAmount = document.getElementById('totalAmount');
+const currentAmount = document.getElementById('currentAmount');
+const donorCountEl = document.getElementById('donorCount');
+const donorList = document.getElementById('donorList');
+const notification = document.getElementById('notification');
+const customAmountInput = document.getElementById('customAmount');
+
+// Criar neve
+function createSnow() {
+    const snowContainer = document.getElementById('snow');
+    setInterval(() => {
+        if (Math.random() > 0.6) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.textContent = ['❄️', '❅', '❆'][Math.floor(Math.random() * 3)];
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            snowflake.style.opacity = Math.random() * 0.6 + 0.4;
+            snowflake.style.fontSize = (Math.random() * 0.8 + 0.8) + 'rem';
+            snowContainer.appendChild(snowflake);
+            
+            setTimeout(() => snowflake.remove(), 7000);
+        }
+    }, 200);
+}
+
+// CONFIGURAÇÃO DO PAYPAL
+const PAYPAL_EMAIL = 'matiaspratas18@gmail.com';
+
+// Fazer doação
+function makeDonation(amount) {
+    redirectToPayPal(amount);
+}
+
+// Fazer doação customizada
+function makeCustomDonation() {
+    const amount = parseFloat(customAmountInput.value);
+    if (amount && amount > 0) {
+        redirectToPayPal(amount);
+        customAmountInput.value = '';
+    } else {
+        showNotification('⚠️ Por favor, insira um valor válido!');
+    }
+}
+
+// Redirecionar para PayPal
+function redirectToPayPal(amount) {
+    // URL do PayPal para donativos
+    const paypalURL = `https://www.paypal.com/donate/?business=${encodeURIComponent(PAYPAL_EMAIL)}&amount=${amount}&currency_code=EUR&item_name=${encodeURIComponent('Donativo de Natal 🎄')}`;
+    
+    // Mostrar notificação antes de redirecionar
+    showNotification(`🎁 A redirecionar para PayPal (€${amount.toFixed(2)})...`);
+    
+    // Redirecionar após 1 segundo
+    setTimeout(() => {
+        window.open(paypalURL, '_blank');
+    }, 1000);
+}
+
+// Processar doação
+function processDonation(amount) {
+    totalDonated += amount;
+    donorCount++;
+    
+    if (totalDonated > GOAL) {
+        totalDonated = GOAL;
+    }
+    
+    // Adicionar doador recente
+    const donor = {
+        name: generateDonorName(),
+        amount: amount,
+        time: 'Agora mesmo'
+    };
+    
+    recentDonors.unshift(donor);
+    if (recentDonors.length > 10) {
+        recentDonors.pop();
+    }
+    
+    updateUI();
+    showNotification(`🎁 Obrigado pelo donativo de €${amount.toFixed(2)}!`);
+    
+    if (totalDonated >= GOAL) {
+        setTimeout(() => {
+            showNotification('🎉🎄 META ATINGIDA! FELIZ NATAL! 🎅⭐');
+        }, 1500);
+    }
+}
+
+// Atualizar interface
+function updateUI() {
+    const percentage = Math.min((totalDonated / GOAL) * 100, 100);
+    
+    progressBar.style.width = percentage + '%';
+    progressPercentage.textContent = Math.round(percentage) + '%';
+    totalAmount.textContent = '€' + totalDonated.toFixed(2);
+    currentAmount.textContent = '€' + totalDonated.toFixed(2);
+    donorCountEl.textContent = donorCount;
+    
+    updateDonorList();
+}
+
+// Atualizar lista de doadores
+function updateDonorList() {
+    if (recentDonors.length === 0) {
+        donorList.innerHTML = `
+            <div style="text-align: center; color: #999; padding: 20px;">
+                Seja o primeiro a doar! 🎅
+            </div>
+        `;
+        return;
+    }
+    
+    donorList.innerHTML = recentDonors.map(donor => `
+        <div class="donor-item">
+            <div>
+                <div class="donor-name">🎁 ${donor.name}</div>
+                <div class="donor-time">${donor.time}</div>
+            </div>
+            <div class="donor-amount">€${donor.amount.toFixed(2)}</div>
+        </div>
+    `).join('');
+}
+
+// Gerar nome de doador
+function generateDonorName() {
+    const names = [
+        'João Silva', 'Maria Santos', 'Pedro Costa', 'Ana Oliveira',
+        'Carlos Ferreira', 'Sofia Almeida', 'Miguel Pereira', 'Beatriz Rodrigues',
+        'Francisco Martins', 'Inês Sousa', 'Doador Anónimo', 'Amigo Secreto'
+    ];
+    return names[Math.floor(Math.random() * names.length)];
+}
+
+// Mostrar notificação
+function showNotification(message) {
+    notification.textContent = message;
+    notification.classList.add('show');
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 3000);
+}
+
+// Enter no input customizado
+customAmountInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        makeCustomDonation();
+    }
+});
+
+// Inicializar
+createSnow();
+updateUI();
+</script>
+
+</body>
+</html>
