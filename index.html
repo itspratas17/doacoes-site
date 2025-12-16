@@ -791,7 +791,7 @@ function makeCustomDonation() {
 }
 
 function redirectToPayPal(amount) {
-    const paypalURL = `https://www.paypal.com/donate/?business=${encodeURIComponent(PAYPAL_EMAIL)}&amount=${amount}&currency_code=EUR&item_name=${encodeURIComponent('Donativo de Natal 🎄')}`;
+    const paypalURL = `https://www.paypal.com/donate/?business=${encodeURIComponent(PAYPAL_EMAIL)}&amount=${amount}&currency_code=EUR&item_name=${encodeURIComponent('Donation de Natal 🎄')}`;
     showNotification(`🎁 A redirecionar para PayPal (€${amount.toFixed(2)})...`);
     setTimeout(() => {
         window.open(paypalURL, '_blank');
@@ -853,3 +853,4 @@ setInterval(loadDataFromSheet, 30000);
 
 </body>
 </html>
+
