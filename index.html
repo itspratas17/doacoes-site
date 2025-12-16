@@ -590,7 +590,7 @@ footer {
     <header>
         <div class="logo">🎄</div>
         <h1>Campanha de Natal</h1>
-        <div class="subtitle">Ajude a espalhar a magia do Natal! 🎅</div>
+        <div class="subtitle">Ajuda me a espalhar a magia do Natal! 🎅</div>
         <div class="christmas-lights">
             <div class="light"></div>
             <div class="light"></div>
@@ -672,7 +672,7 @@ footer {
 </div>
 
 <footer>
-    <p class="footer-text">Feito de <span class="footer-heart">❤️</span> no espírito de Natal</p>
+    <p class="footer-text">Feito com <span class="footer-heart">❤️</span> no espírito de Natal</p>
     <p class="footer-text">🎄 Feliz Natal! 🎅</p>
 </footer>
 
@@ -716,42 +716,13 @@ function loadDataFromSheet() {
                         
                         let timeText = 'Recentemente';
                         if (data) {
-let donationDate;
-
-// tenta formato ISO ou timestamp
-donationDate = new Date(data);
-
-// se for inválido (ex: 15/12/2025 18:30)
-if (isNaN(donationDate.getTime())) {
-    const parts = data.split(' ');
-    const dateParts = parts[0].split('/'); // dd/mm/yyyy
-    const timeParts = (parts[1] || '00:00').split(':');
-
-    donationDate = new Date(
-        dateParts[2],           // ano
-        dateParts[1] - 1,       // mês (0-based)
-        dateParts[0],           // dia
-        timeParts[0],           // hora
-        timeParts[1] || 0       // minuto
-    );
-}
-
-const now = new Date();
-const diffTime = now - donationDate;
-
-if (diffTime >= 0) {
-    const diffMinutes = Math.floor(diffTime / (1000 * 60));
-    const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-    if (diffMinutes < 1) timeText = 'Agora mesmo';
-    else if (diffMinutes < 60) timeText = `Há ${diffMinutes} min`;
-    else if (diffHours < 24) timeText = `Há ${diffHours} horas`;
-    else if (diffDays === 1) timeText = 'Há 1 dia';
-    else timeText = `Há ${diffDays} dias`;
-} else {
-    timeText = 'Recentemente';
-}                           
+                            const donationDate = new Date(data);
+                            const now = new Date();
+                            const diffTime = now - donationDate;
+                            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                            const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
+                            const diffMinutes = Math.floor(diffTime / (1000 * 60));
+                            
                             if (diffMinutes < 1) timeText = 'Agora mesmo';
                             else if (diffMinutes < 60) timeText = `Há ${diffMinutes} min`;
                             else if (diffHours < 24) timeText = `Há ${diffHours} horas`;
@@ -820,7 +791,7 @@ function makeCustomDonation() {
 }
 
 function redirectToPayPal(amount) {
-    const paypalURL = `https://www.paypal.com/donate/?business=${encodeURIComponent(PAYPAL_EMAIL)}&amount=${amount}&currency_code=EUR&item_name=${encodeURIComponent('Donation de Natal 🎄')}`;
+    const paypalURL = `https://www.paypal.com/donate/?business=${encodeURIComponent(PAYPAL_EMAIL)}&amount=${amount}&currency_code=EUR&item_name=${encodeURIComponent('Donativo de Natal 🎄')}`;
     showNotification(`🎁 A redirecionar para PayPal (€${amount.toFixed(2)})...`);
     setTimeout(() => {
         window.open(paypalURL, '_blank');
@@ -882,4 +853,3 @@ setInterval(loadDataFromSheet, 30000);
 
 </body>
 </html>
-
