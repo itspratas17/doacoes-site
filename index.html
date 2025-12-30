@@ -252,9 +252,12 @@
     }
 
     paypal.HostedButtons({
-        hostedButtonId: "LB9MWNTELJU3A",
-        onApprove: function() { document.getElementById('confirm-overlay').style.display = 'flex'; }
-    }).render("#paypal-container-LB9MWNTELJU3A");
+    hostedButtonId: "LB9MWNTELJU3A",
+    onApprove: function() { 
+        alert("Obrigado pela sua contribuição. Um código de confirmação será enviado para o seu e-mail em breve."); // Mensagem nova
+        document.getElementById('confirm-overlay').style.display = 'flex'; 
+    }
+}).render("#paypal-container-LB9MWNTELJU3A");
 
     let currentAmount = parseFloat(localStorage.getItem('total')) || 0;
     let goal = parseFloat(localStorage.getItem('goal')) || 100;
@@ -318,3 +321,4 @@
 
 </body>
 </html>
+
